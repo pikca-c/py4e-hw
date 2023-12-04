@@ -1,1 +1,3 @@
-
+text = "X-DSPAM-Confidence:    0.8475"
+colonpos = text.find(":")
+print(float(text[colonpos+1: ].strip()))
