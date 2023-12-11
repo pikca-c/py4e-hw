@@ -1,1 +1,16 @@
+# Use the file name mbox-short.txt as the file name
+fname = input("Enter file name: ")
+try:
+    fhand = open(fname)
+except:
+    print("File cannot be opened: ", fname)
 
+val = float(0)
+no = float(0)
+for line in fhand:
+    if not line.startswith("X-DSPAM-Confidence:"):
+        continue
+    colpos = line.find(":")
+    val = val + float(line[colpos+1:].strip())
+    no = no + 1
+print("Average spam confidence:", val/no)
